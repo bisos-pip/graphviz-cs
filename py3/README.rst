@@ -29,7 +29,8 @@ Overview
 bisos.graphviz ()
 
 bisos.graphviz is a python package that uses the PyCS-Framework for
-NOTYET. It is a BISOS-Capability and a Standalone-BISOS-Package.
+processing graphviz specifications in python. It is a BISOS-Capability
+and a Standalone-BISOS-Package.
 
 *bisos.graphviz* is based on PyCS-Foundation and can be used both as a
 Command and as a Service (invoke/perform model of remote operations)

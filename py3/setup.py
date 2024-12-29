@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import setuptools
-#import sys
+# Template File:  "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/setup.py"
 
 ####+BEGIN: bx:dblock:global:file-insert :mode python :file "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/commonSetupCode.py"
 
@@ -40,38 +39,50 @@ def longDescription():
 
 ####+END:
 
+# :curDevVer "0.92" :pypiNextVer "0.95"
+####+BEGIN: b:py3:pypi/nextVersion :increment 0.01
 
-#__version__ = get_version('unisos/icm/__init__.py')
-__version__ = '0.1'
+# ./pypiUploadVer does not exist -- pypiNextVer=0.11 -- installedVersion=0.1
+def pkgVersion():
+        return '0.1'  # Version Nu Of Installed Pkg
 
+####+END:
+
+####+BEGIN: b:py3:pypi/requires :extras ()
 
 requires = [
-    'bisos.currents',
+"blee",
+"blee.icmPlayer",
+"bisos",
+"bisos.b",
+"bisos.common",
 ]
+####+END:
 
-#print('Setting up under python version %s' % sys.version)
-#print('Requirements: %s' % ','.join(requires))
+####+BEGIN: b:py3:pypi/scripts :comment ""
 
 scripts = [
+'./bin/exmpl-graphviz.cs',
+'./bin/seedGraphviz.cs',
 ]
+####+END:
+
+#
+# Data files would be  specified in ./MANIFEST.in as: # recursive-include bisos/pkgName *
+#
+
+data_files = [
+]
+
+# :pkgName "--auto--"  --- results in use of name=pkgName(),
+####+BEGIN: b:py3:pypi/setupFuncArgs :pkgName ""
 
 setuptools.setup(
     name='bisos.graphviz',
-    version=__version__,
-    # namespace_packages=['bisos'],
+    version=pkgVersion(),
     packages=setuptools.find_packages(),
     scripts=scripts,
     #data_files=data_files,
-    # data_files=[
-    #     ('pkgInfo', ["unisos/pkgInfo/fp/icmsPkgName/value"]),
-    # ],
-    #package_dir={'unisos.marme': 'unisos'},
-    # package_data={
-    #     'unisos.marme': ['pkgInfo/fp/icmsPkgName/value'],
-    # },
-    # package_data={
-    #     '': ['unisos/marme/resolv.conf'],
-    # },
     include_package_data=True,
     zip_safe=False,
     author='Mohsen Banan',
@@ -95,3 +106,4 @@ setuptools.setup(
         ]
     )
 
+####+END:
