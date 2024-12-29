@@ -3,7 +3,7 @@
 ####+BEGIN: b:prog:file/particulars :authors ("./inserts/authors-mb.org")
 """ #+begin_org
 * *[[elisp:(org-cycle)][| Particulars |]]* :: Authors, version
-** This File: /bisos/git/auth/bxRepos/bisos-pip/binsprep/py3/bin/exmpl-func-binsPrep.cs
+** This File: /bisos/git/bxRepos/bisos-pip/graphviz-cs/py3/bin/exmpl-graphviz.cs
 ** Authors: Mohsen BANAN, http://mohsen.banan.1.byname.net/contact
 #+end_org """
 ####+END:
@@ -70,6 +70,7 @@ def rank_same(
     d.edges(['AB', 'AC', 'CD', 'XY'])
 
     return d
+
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "colors" :funcType "Typed" :deco "track"
 """ #+begin_org
