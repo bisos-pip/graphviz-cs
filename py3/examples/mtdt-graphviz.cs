@@ -763,6 +763,12 @@ def mtdtConceptsGraph_l3(
 
     return dot
 
+####+BEGIN: b:py3:cs:orgItem/basic :type "=Seed Setup= " :title "*Common Facilities*" :comment "General"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =Seed Setup=  [[elisp:(outline-show-subtree+toggle)][||]] *Common Facilities* General  [[elisp:(org-cycle)][| ]]
+#+end_org """
+####+END:
+
 
 namedGraphsList = [
     ng("mtdtConceptsGraph", func=mtdtConceptsGraph),   #
@@ -774,17 +780,22 @@ namedGraphsList = [
 
 
 graphvizSeed.setup(
+    seedType="common",
     namedGraphsList=namedGraphsList,
     # examplesHook=qmail_binsPrep.examples_csu,
 )
 
-
-####+BEGINNOT: b:py3:cs:seed/binsprep :origin "pipx"
+####+BEGIN: b:py3:cs:seed/withWhich :seedName "seedGraphviz.cs"
 """ #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  seed       [[elisp:(outline-show-subtree+toggle)][||]] <<pipx>>   [[elisp:(org-cycle)][| ]]
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  seed       [[elisp:(outline-show-subtree+toggle)][||]] <<seedGraphviz.cs>>   [[elisp:(org-cycle)][| ]]
 #+end_org """
+import shutil
+import os
 
-__file__ = '/bisos/git/bxRepos/bisos-pip/bx-graphviz/py3/bin/seedGraphviz.cs'
+seedName = 'seedGraphviz.cs'
+seedFullPath = os.path.abspath(shutil.which(seedName))
+
+__file__ = seedFullPath
 with open(__file__) as f:
     exec(compile(f.read(), __file__, 'exec'))
 
