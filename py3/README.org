@@ -51,6 +51,12 @@ Examples directory
 #+ATTR_HTML: :width 1100px
 [[./images/graphvizLayers.png]]
 
+
+#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
+#+NAME:   fig:images/graphvizLayers
+#+ATTR_HTML: :width 1100px
+[[https://github.com/bisos-pip/graphviz-cs/blob/master/py3/images/graphvizLayers.png]]
+
 The graphviz below provides an overview of headers used in MTDT-Distributions. See
 https://github.com/bx-blee/mtdt-distribution for more details.
 
