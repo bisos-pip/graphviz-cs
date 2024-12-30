@@ -11,19 +11,14 @@
 
 bisos.graphviz (Seeded-PyCS Graphviz) is Python graphviz wrapped into BISOS Command-Services and Seed Machinaries.
 
-bisos.graphviz is a python package that uses the PyCS-Framework for processing
-graphviz specifications in python. It is a layer on top of Python Graphviz ---
-https://github.com/xflr6/graphviz --- which provides a python interface
-to the DOT language of the Graphviz graph drawing software.
-It is a BISOS-Capability and a Standalone-BISOS-Package.
-
-/bisos.graphviz/ is based on PyCS-Foundation ([[https://github.com/bisos-pip/pycs][bisos.PyCS]]) and can be used both as a Command and
-as a Service (invoke/perform model of remote operations) using RPYC for central
-management of multiple systems. The Remote (Service) aspect of PyCS is not applicable to bisos.graphviz.
+bisos.graphviz is a python package that uses the PyCS-Framework ([[https://github.com/bisos-pip/pycs][bisos.PyCS]]) for processing graphviz specifications.
+It is a layer on top of Python Graphviz --- https://github.com/xflr6/graphviz --- which provides a
+python interface to the DOT language of the Graphviz graph drawing software. It is a BISOS-Capability and a
+Standalone-BISOS-Package.
 
 * Abstract -- Concepts and Terminology
 
-Refering to the figure below, inputs are on the top and outputs are the bottom.
+Refering to the figure below, inputs are on the top and outputs are at the bottom.
 
 ** Layerings
 
@@ -33,7 +28,7 @@ The ellipses represent processing layers.
   Graphviz is open source graph visualization software hosted at https://www.graphviz.org/.
 
 - The *Python Graphviz layer* builds on the graphviz.org layer and provides an interface to dot facilities in python.
-  Python Graphviz software is hosted at
+  Python Graphviz software is hosted at https://github.com/xflr6/graphviz.
 
 - The *Seeded-PyCS Graphviz layer* builds on the Python Graphviz layer and provides a command-line interface to
   python specifications of graphs. Seeded-PyCS Graphviz uses [[https://github.com/bisos-pip/pycs][bisos.PyCS]]. Seeded-PyCS Graphviz software is hosted at
@@ -43,22 +38,24 @@ The ellipses represent processing layers.
 
 Input files containing graph specifications (the top layer in the figure below) can reside anywhere in the file system
 and are typically named package-graphviz.cs where package convays a name for a grouping of graph specifications.
-Execution of input files (say package-graphviz.cs) produces output in any or all of the output formats.
+Execution of input files (say [[file:./py3/examples/exmpl-graphviz.cs]]) produces output in any or all of the output formats.
 The output format can be any of pdf, svg, png, jpeg or gv format. Output in various formats is shown as
 the bottom layer of the figure below.
 
-Input files are structured as Named Graphs. Named Graphs have two elements:
-1) Graph specifictaion function. A python named function that takes no arguments and returns a type *graphviz.Digraph*
-2) A name. The name is used to produce output files and is commonly the name of function (1) as well.
+Input files are structured as *Named Graphs*. Named Graphs have two elements:
+1) *Graph specifictaion function*. A python named function that takes no arguments and returns a type *graphviz.Digraph*
+2) *Name*. The name is used to produce output files and is commonly the name of function (1) as well.
 
 The list of Named Graphs forms the *namedGraphsList* which becomes an argument to the *graphvizSeed.setup* function.
 
-The exmpl-graphviz.cs in the bin directory can be used as a starting point and example. The examples directory
-contains many other examples. The images directory contains the input that produced the figure below.
+The [[file:./py3/bin/exmpl-graphviz.cs]] in the bin directory can be used as a starting point and example. The examples
+directory contains many other examples. The images directory contains the input
+([[file:./py3/images/readme-graphviz.cs]])that produced the figure below.
 
 ** Concept of Seeded-PyCS Input Files
 
-PyCS provides a framework for creating mapping python functions to the command line (similar to click).
+PyCS ([[https://github.com/bisos-pip/pycs][bisos.PyCS]]) provides a framework for creating python mapping functions to the command line (similar to
+click).
 
 Often it make good sense to package the input with its processing capabilities in one place. We do this using the
 Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
@@ -95,13 +92,14 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 
 * A Hello World Example --- hello-graphviz.cs
 
-Below we shall walk through [[file:./py3/examples/hello-graphviz.cs]]
-which is the equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
+Below we shall walk through [[file:./py3/examples/hello-graphviz.cs]] which produces
+ [[file:./py3/examples/hello-graphviz.png.]]
+This is the equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
 which produces  https://graphviz.org/Gallery/directed/hello.html.
 
- [[file:./py3/examples/hello-graphviz.cs]] is written in Python COMEEGA, which is  Python augmented by Emacs org-mode.
+ [[file:./py3/examples/hello-graphviz.cs]] is written in Python COMEEGA, which is Python augmented by Emacs org-mode.
  In that file everything inside of +BEGIN +END is a dynamic block and everything that is in +begin_org +end_org
- is in org-mode syntax.
+ is in org-mode syntax. For more information about  COMEEGA (Collaborative Org-Mode Enhanced Emacs Generalized Authorship) see https://github.com/bx-blee/comeega. PyCS and BISOS are developed in COMEEGA.
 
 The code fragment below is in pure Python.
 
