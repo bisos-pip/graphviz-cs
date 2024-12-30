@@ -63,7 +63,7 @@ PyCS provides a framework for creating mapping python functions to the command l
 Often it make good sense to package the input with its processing capabilities in one place. We do this using the
 Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 
-
+-----------------------------
 
 #+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
 #+NAME:   fig:images/graphvizLayers
@@ -75,7 +75,7 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 #+ATTR_HTML: :width 1100px
 [[./images/graphvizLayers.png]]
 
-
+----------------------------
 
 * Table of Contents     :TOC:
 - [[#overview][Overview]]
@@ -83,7 +83,6 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
   - [[#layerings][Layerings]]
   - [[#named-graphs-input-files----package-graphvizcs][Named Graphs Input Files -- package-graphviz.cs]]
   - [[#concept-of-seeded-pycs-input-files][Concept of Seeded-PyCS Input Files]]
-- [[#abstract----concepts-and-terminology-1][Abstract -- Concepts and Terminology]]
 - [[#part-of-bisos-----bystar-internet-services-operating-system][Part of BISOS --- ByStar Internet Services Operating System]]
 - [[#bisosgraphviz-is-a-command-services-pycs-facility][bisos.graphviz is a Command Services (PyCS) Facility]]
 -  [[#uses-of-bisosgraphviz][Uses of bisos.graphviz]]
@@ -102,21 +101,6 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 - [[#documentation-and-blee-panels][Documentation and Blee-Panels]]
   - [[#bisosgraphviz-blee-panels][bisos.graphviz Blee-Panels]]
 - [[#support][Support]]
-
-* Abstract -- Concepts and Terminology
-
-Examples directory
-
-#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
-#+NAME:   fig:images/graphvizLayers
-#+ATTR_HTML: :width 1100px
-[[./py3/images/graphvizLayers.png]]
-
-#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
-#+NAME:   fig:images/graphvizLayers
-#+ATTR_HTML: :width 1100px
-[[./images/graphvizLayers.png]]
-
 
 * Part of BISOS --- ByStar Internet Services Operating System
 
