@@ -44,7 +44,7 @@ def graphvizLayers(
 
     with d.subgraph() as s:
         s.attr(rank='same')
-        s.node('graphvizSeed', 'Graphviz\n Seeded-PyCS\n\nhttps://github.com/bisos-pip/graphviz-cs', style='filled', fillcolor='darkseagreen3')
+        s.node('graphvizSeed', 'Seeded-PyCS\nGraphviz\n\nhttps://github.com/bisos-pip/graphviz-cs', style='filled', fillcolor='darkseagreen3')
         s.node('pycs', 'Python\nCommand Services\n (PyCS)\nhttps://github.com/bisos-pip/pycs', style='filled', fillcolor='darkseagreen3')
 
     with d.subgraph() as s:

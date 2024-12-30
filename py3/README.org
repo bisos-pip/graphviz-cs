@@ -83,32 +83,76 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
   - [[#layerings][Layerings]]
   - [[#named-graphs-input-files----package-graphvizcs][Named Graphs Input Files -- package-graphviz.cs]]
   - [[#concept-of-seeded-pycs-input-files][Concept of Seeded-PyCS Input Files]]
-- [[#part-of-bisos-----bystar-internet-services-operating-system][Part of BISOS --- ByStar Internet Services Operating System]]
-- [[#bisosgraphviz-as-a-standalone-piece-of-bisos][bisos.graphviz as a Standalone Piece of BISOS]]
+- [[#a-hello-world-example-----hello-graphvizcs][A Hello World Example --- hello-graphviz.cs]]
 - [[#installation][Installation]]
   - [[#installation-with-pip][Installation With pip]]
   - [[#installation-with-pipx][Installation With pipx]]
+- [[#part-of-bisos-and-bystar-----bystar-internet-services-operating-system][Part of BISOS and ByStar --- ByStar Internet Services Operating System]]
+- [[#bisosgraphviz-as-a-standalone-piece-of-bisos][bisos.graphviz as a Standalone Piece of BISOS]]
 - [[#documentation-and-blee-panels][Documentation and Blee-Panels]]
   - [[#bisosgraphviz-blee-panels][bisos.graphviz Blee-Panels]]
 - [[#support][Support]]
 
-* Part of BISOS --- ByStar Internet Services Operating System
+* A Hello World Example --- hello-graphviz.cs
 
-Layered on top of Debian, *BISOS*: (By* Internet Services Operating System) is a
-unified and universal framework for developing both internet services and
-software-service continuums that use internet services. See [[https://github.com/bxGenesis/start][Bootstrapping
-ByStar, BISOS and Blee]] for information about getting started with BISOS.\\
-*BISOS* is a foundation for *The Libre-Halaal ByStar Digital Ecosystem* which is
-described as a cure for losses of autonomy and privacy in a book titled: [[https://github.com/bxplpc/120033][Nature
-of Polyexistentials]]
+Below we shall walk through [[file:./py3/examples/hello-graphviz.cs]]
+which is the equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
+which produces  https://graphviz.org/Gallery/directed/hello.html.
 
-/bisos.graphviz/ is part of BISOS.
+ [[file:./py3/examples/hello-graphviz.cs]] is written in Python COMEEGA, which is  Python augmented by Emacs org-mode.
+ In that file everything inside of +BEGIN +END is a dynamic block and everything that is in +begin_org +end_org
+ is in org-mode syntax.
 
-* bisos.graphviz as a Standalone Piece of BISOS
+The code fragment below is in pure Python.
 
-bisos.graphviz is a standalone piece of BISOS. It can be used as a self-contained
-Python package separate from BISOS. Follow the installtion and usage
-instructions below for your own use.
+#+begin_src python
+import graphviz
+
+from bisos.graphviz import graphvizSeed
+ng = graphvizSeed.namedGraph  # just an abbreviation
+
+def hello() -> graphviz.Digraph:
+
+    g = graphviz.Digraph('G',)
+
+    g.edge('Hello', 'World')
+
+    return g
+
+namedGraphsList = [
+    ng("hello", func=hello),
+]
+
+graphvizSeed.setup(
+    namedGraphsList=namedGraphsList,
+)
+#+end_src
+
+The *b:py3:cs:seed/withWhich :seedName "seedGraphviz.cs"* dynamic block then results in the execution of the seed:
+
+#+begin_src python
+__file__ = os.path.abspath(seedPath)
+with open(__file__) as f:
+    exec(compile(f.read(), __file__, 'exec'))
+#+end_src
+
+If you wanted to include multiple graphs in one input file, you would just add them the *namedGraphsList*.
+
+You can then just run:
+
+#+begin_src bash
+hello-graphviz.cs
+#+end_src
+
+Which produces a menu for production of desired formats.
+
+or you can run:
+
+#+begin_src bash
+hello-graphviz.cs --format="all"  -i ngProcess all
+#+end_src
+
+Which produces output in all formats.
 
 * Installation
 
@@ -139,6 +183,24 @@ pipx install bisos.graphviz
 The following commands are made available:
 - seedGraphviz.cs
 - exmpl-graphviz.cs
+
+* Part of BISOS and ByStar --- ByStar Internet Services Operating System
+
+Layered on top of Debian, *BISOS*: (By* Internet Services Operating System) is a
+unified and universal framework for developing both internet services and
+software-service continuums that use internet services. See [[https://github.com/bxGenesis/start][Bootstrapping
+ByStar, BISOS and Blee]] for information about getting started with BISOS.\\
+*BISOS* is a foundation for *The Libre-Halaal ByStar Digital Ecosystem* which is
+described as a cure for losses of autonomy and privacy in a book titled: [[https://github.com/bxplpc/120033][Nature
+of Polyexistentials]]
+
+/bisos.graphviz/ is part of BISOS.
+
+* bisos.graphviz as a Standalone Piece of BISOS
+
+bisos.graphviz is a standalone piece of BISOS. It can be used as a self-contained
+Python package separate from BISOS. Follow the installtion and usage
+instructions below for your own use.
 
 
 * Documentation and Blee-Panels
