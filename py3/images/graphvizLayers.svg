@@ -21,8 +21,8 @@
 <g id="node4" class="node">
 <title>graphvizSeed</title>
 <ellipse fill="#9bcd9b" stroke="black" cx="471" cy="-305.16" rx="213.59" ry="48.58"/>
-<text text-anchor="middle" x="471" y="-324.46" font-family="Times,serif" font-size="14.00">Graphviz</text>
-<text text-anchor="middle" x="471" y="-309.46" font-family="Times,serif" font-size="14.00"> Seeded&#45;PyCS</text>
+<text text-anchor="middle" x="471" y="-324.46" font-family="Times,serif" font-size="14.00">Seeded&#45;PyCS</text>
+<text text-anchor="middle" x="471" y="-309.46" font-family="Times,serif" font-size="14.00">Graphviz</text>
 <text text-anchor="middle" x="471" y="-278.46" font-family="Times,serif" font-size="14.00">https://github.com/bisos&#45;pip/graphviz&#45;cs</text>
 </g>
 <!-- seededCsSpec1&#45;&gt;graphvizSeed -->
@@ -90,7 +90,7 @@
 <!-- graphviz -->
 <g id="node7" class="node">
 <title>graphviz</title>
-<ellipse fill="deepskyblue" stroke="black" cx="471" cy="-90" rx="71.49" ry="18"/>
+<ellipse fill="#00eeee" stroke="black" cx="471" cy="-90" rx="71.49" ry="18"/>
 <text text-anchor="middle" x="471" y="-86.3" font-family="Times,serif" font-size="14.00">Graphviz.org</text>
 </g>
 <!-- pyGraphviz&#45;&gt;graphviz -->
@@ -102,67 +102,80 @@
 <!-- pdf -->
 <g id="node8" class="node">
 <title>pdf</title>
-<path fill="darksalmon" stroke="black" d="M354,-32.73C354,-34.53 341.9,-36 327,-36 312.1,-36 300,-34.53 300,-32.73 300,-32.73 300,-3.27 300,-3.27 300,-1.47 312.1,0 327,0 341.9,0 354,-1.47 354,-3.27 354,-3.27 354,-32.73 354,-32.73"/>
-<path fill="none" stroke="black" d="M354,-32.73C354,-30.92 341.9,-29.45 327,-29.45 312.1,-29.45 300,-30.92 300,-32.73"/>
-<text text-anchor="middle" x="327" y="-14.3" font-family="Times,serif" font-size="14.00">pdf</text>
+<path fill="darksalmon" stroke="black" d="M318,-32.73C318,-34.53 305.9,-36 291,-36 276.1,-36 264,-34.53 264,-32.73 264,-32.73 264,-3.27 264,-3.27 264,-1.47 276.1,0 291,0 305.9,0 318,-1.47 318,-3.27 318,-3.27 318,-32.73 318,-32.73"/>
+<path fill="none" stroke="black" d="M318,-32.73C318,-30.92 305.9,-29.45 291,-29.45 276.1,-29.45 264,-30.92 264,-32.73"/>
+<text text-anchor="middle" x="291" y="-14.3" font-family="Times,serif" font-size="14.00">pdf</text>
 </g>
 <!-- graphviz&#45;&gt;pdf -->
 <g id="edge7" class="edge">
 <title>graphviz&#45;&gt;pdf</title>
-<path fill="none" stroke="black" d="M439.4,-73.64C416.99,-62.74 386.85,-48.1 363.43,-36.71"/>
-<polygon fill="black" stroke="black" points="364.69,-33.43 354.17,-32.21 361.63,-39.73 364.69,-33.43"/>
+<path fill="none" stroke="black" d="M430.28,-75.1C403.34,-65.65 367.1,-52.49 327.36,-35.99"/>
+<polygon fill="black" stroke="black" points="328.59,-32.71 318.01,-32.07 325.88,-39.16 328.59,-32.71"/>
 </g>
 <!-- svg -->
 <g id="node9" class="node">
 <title>svg</title>
-<path fill="darksalmon" stroke="black" d="M426,-32.73C426,-34.53 413.9,-36 399,-36 384.1,-36 372,-34.53 372,-32.73 372,-32.73 372,-3.27 372,-3.27 372,-1.47 384.1,0 399,0 413.9,0 426,-1.47 426,-3.27 426,-3.27 426,-32.73 426,-32.73"/>
-<path fill="none" stroke="black" d="M426,-32.73C426,-30.92 413.9,-29.45 399,-29.45 384.1,-29.45 372,-30.92 372,-32.73"/>
-<text text-anchor="middle" x="399" y="-14.3" font-family="Times,serif" font-size="14.00">svg</text>
+<path fill="darksalmon" stroke="black" d="M390,-32.73C390,-34.53 377.9,-36 363,-36 348.1,-36 336,-34.53 336,-32.73 336,-32.73 336,-3.27 336,-3.27 336,-1.47 348.1,0 363,0 377.9,0 390,-1.47 390,-3.27 390,-3.27 390,-32.73 390,-32.73"/>
+<path fill="none" stroke="black" d="M390,-32.73C390,-30.92 377.9,-29.45 363,-29.45 348.1,-29.45 336,-30.92 336,-32.73"/>
+<text text-anchor="middle" x="363" y="-14.3" font-family="Times,serif" font-size="14.00">svg</text>
 </g>
 <!-- graphviz&#45;&gt;svg -->
 <g id="edge8" class="edge">
 <title>graphviz&#45;&gt;svg</title>
-<path fill="none" stroke="black" d="M453.94,-72.41C444.92,-63.65 433.7,-52.73 423.74,-43.06"/>
-<polygon fill="black" stroke="black" points="426.05,-40.42 416.44,-35.96 421.17,-45.44 426.05,-40.42"/>
+<path fill="none" stroke="black" d="M446.22,-72.94C431.4,-63.34 412.39,-51.01 396.27,-40.56"/>
+<polygon fill="black" stroke="black" points="397.96,-37.49 387.66,-34.98 394.15,-43.36 397.96,-37.49"/>
 </g>
 <!-- etcOutput -->
 <g id="node10" class="node">
 <title>etcOutput</title>
-<path fill="darksalmon" stroke="black" d="M498,-32.73C498,-34.53 485.9,-36 471,-36 456.1,-36 444,-34.53 444,-32.73 444,-32.73 444,-3.27 444,-3.27 444,-1.47 456.1,0 471,0 485.9,0 498,-1.47 498,-3.27 498,-3.27 498,-32.73 498,-32.73"/>
-<path fill="none" stroke="black" d="M498,-32.73C498,-30.92 485.9,-29.45 471,-29.45 456.1,-29.45 444,-30.92 444,-32.73"/>
-<text text-anchor="middle" x="471" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+<path fill="darksalmon" stroke="black" d="M462,-32.73C462,-34.53 449.9,-36 435,-36 420.1,-36 408,-34.53 408,-32.73 408,-32.73 408,-3.27 408,-3.27 408,-1.47 420.1,0 435,0 449.9,0 462,-1.47 462,-3.27 462,-3.27 462,-32.73 462,-32.73"/>
+<path fill="none" stroke="black" d="M462,-32.73C462,-30.92 449.9,-29.45 435,-29.45 420.1,-29.45 408,-30.92 408,-32.73"/>
+<text text-anchor="middle" x="435" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
 </g>
 <!-- graphviz&#45;&gt;etcOutput -->
 <g id="edge11" class="edge">
 <title>graphviz&#45;&gt;etcOutput</title>
-<path fill="none" stroke="black" d="M471,-71.7C471,-63.98 471,-54.71 471,-46.11"/>
-<polygon fill="black" stroke="black" points="474.5,-46.1 471,-36.1 467.5,-46.1 474.5,-46.1"/>
+<path fill="none" stroke="black" d="M462.29,-72.05C458.15,-64.01 453.11,-54.2 448.49,-45.23"/>
+<polygon fill="black" stroke="black" points="451.57,-43.57 443.88,-36.28 445.35,-46.77 451.57,-43.57"/>
 </g>
 <!-- png -->
 <g id="node11" class="node">
 <title>png</title>
-<path fill="darksalmon" stroke="black" d="M570,-32.73C570,-34.53 557.9,-36 543,-36 528.1,-36 516,-34.53 516,-32.73 516,-32.73 516,-3.27 516,-3.27 516,-1.47 528.1,0 543,0 557.9,0 570,-1.47 570,-3.27 570,-3.27 570,-32.73 570,-32.73"/>
-<path fill="none" stroke="black" d="M570,-32.73C570,-30.92 557.9,-29.45 543,-29.45 528.1,-29.45 516,-30.92 516,-32.73"/>
-<text text-anchor="middle" x="543" y="-14.3" font-family="Times,serif" font-size="14.00">png</text>
+<path fill="darksalmon" stroke="black" d="M534,-32.73C534,-34.53 521.9,-36 507,-36 492.1,-36 480,-34.53 480,-32.73 480,-32.73 480,-3.27 480,-3.27 480,-1.47 492.1,0 507,0 521.9,0 534,-1.47 534,-3.27 534,-3.27 534,-32.73 534,-32.73"/>
+<path fill="none" stroke="black" d="M534,-32.73C534,-30.92 521.9,-29.45 507,-29.45 492.1,-29.45 480,-30.92 480,-32.73"/>
+<text text-anchor="middle" x="507" y="-14.3" font-family="Times,serif" font-size="14.00">png</text>
 </g>
 <!-- graphviz&#45;&gt;png -->
 <g id="edge9" class="edge">
 <title>graphviz&#45;&gt;png</title>
-<path fill="none" stroke="black" d="M488.06,-72.41C497.08,-63.65 508.3,-52.73 518.26,-43.06"/>
-<polygon fill="black" stroke="black" points="520.83,-45.44 525.56,-35.96 515.95,-40.42 520.83,-45.44"/>
+<path fill="none" stroke="black" d="M479.71,-72.05C483.85,-64.01 488.89,-54.2 493.51,-45.23"/>
+<polygon fill="black" stroke="black" points="496.65,-46.77 498.12,-36.28 490.43,-43.57 496.65,-46.77"/>
 </g>
 <!-- jpeg -->
 <g id="node12" class="node">
 <title>jpeg</title>
-<path fill="darksalmon" stroke="black" d="M642,-32.73C642,-34.53 629.9,-36 615,-36 600.1,-36 588,-34.53 588,-32.73 588,-32.73 588,-3.27 588,-3.27 588,-1.47 600.1,0 615,0 629.9,0 642,-1.47 642,-3.27 642,-3.27 642,-32.73 642,-32.73"/>
-<path fill="none" stroke="black" d="M642,-32.73C642,-30.92 629.9,-29.45 615,-29.45 600.1,-29.45 588,-30.92 588,-32.73"/>
-<text text-anchor="middle" x="615" y="-14.3" font-family="Times,serif" font-size="14.00">jpeg</text>
+<path fill="darksalmon" stroke="black" d="M606,-32.73C606,-34.53 593.9,-36 579,-36 564.1,-36 552,-34.53 552,-32.73 552,-32.73 552,-3.27 552,-3.27 552,-1.47 564.1,0 579,0 593.9,0 606,-1.47 606,-3.27 606,-3.27 606,-32.73 606,-32.73"/>
+<path fill="none" stroke="black" d="M606,-32.73C606,-30.92 593.9,-29.45 579,-29.45 564.1,-29.45 552,-30.92 552,-32.73"/>
+<text text-anchor="middle" x="579" y="-14.3" font-family="Times,serif" font-size="14.00">jpeg</text>
 </g>
 <!-- graphviz&#45;&gt;jpeg -->
 <g id="edge10" class="edge">
 <title>graphviz&#45;&gt;jpeg</title>
-<path fill="none" stroke="black" d="M502.6,-73.64C525.01,-62.74 555.15,-48.1 578.57,-36.71"/>
-<polygon fill="black" stroke="black" points="580.37,-39.73 587.83,-32.21 577.31,-33.43 580.37,-39.73"/>
+<path fill="none" stroke="black" d="M495.78,-72.94C510.6,-63.34 529.61,-51.01 545.73,-40.56"/>
+<polygon fill="black" stroke="black" points="547.85,-43.36 554.34,-34.98 544.04,-37.49 547.85,-43.36"/>
+</g>
+<!-- gv -->
+<g id="node13" class="node">
+<title>gv</title>
+<path fill="darksalmon" stroke="black" d="M678,-32.73C678,-34.53 665.9,-36 651,-36 636.1,-36 624,-34.53 624,-32.73 624,-32.73 624,-3.27 624,-3.27 624,-1.47 636.1,0 651,0 665.9,0 678,-1.47 678,-3.27 678,-3.27 678,-32.73 678,-32.73"/>
+<path fill="none" stroke="black" d="M678,-32.73C678,-30.92 665.9,-29.45 651,-29.45 636.1,-29.45 624,-30.92 624,-32.73"/>
+<text text-anchor="middle" x="651" y="-14.3" font-family="Times,serif" font-size="14.00">gv</text>
+</g>
+<!-- graphviz&#45;&gt;gv -->
+<g id="edge12" class="edge">
+<title>graphviz&#45;&gt;gv</title>
+<path fill="none" stroke="black" d="M511.72,-75.1C538.66,-65.65 574.9,-52.49 614.64,-35.99"/>
+<polygon fill="black" stroke="black" points="616.12,-39.16 623.99,-32.07 613.41,-32.71 616.12,-39.16"/>
 </g>
 </g>
 </svg>

@@ -53,7 +53,7 @@ def graphvizLayers(
 
     with d.subgraph() as s:
         s.attr(rank='same')
-        s.node('graphviz', 'Graphviz.org', style='filled', fillcolor='deepskyblue')
+        s.node('graphviz', 'Graphviz.org', style='filled', fillcolor='cyan2')
 
     with d.subgraph() as s:
         s.attr(rank='same')
@@ -62,6 +62,7 @@ def graphvizLayers(
         s.node('etcOutput', '...', shape='cylinder', style='filled', fillcolor='darksalmon')
         s.node('png', 'png', shape='cylinder', style='filled', fillcolor='darksalmon')
         s.node('jpeg', 'jpeg', shape='cylinder', style='filled', fillcolor='darksalmon')
+        s.node('gv', 'gv', shape='cylinder', style='filled', fillcolor='darksalmon')
 
     d.edge('seededCsSpec1', 'graphvizSeed')
     d.edge('seededCsSpecDots', 'graphvizSeed')
@@ -77,9 +78,19 @@ def graphvizLayers(
     d.edge('graphviz', 'png')
     d.edge('graphviz', 'jpeg')
     d.edge('graphviz', 'etcOutput')
+    d.edge('graphviz', 'gv')
 
     return d
 
+""" #+begin_org
+#+begin_src sh :results output :session shared
+readme-graphviz.cs --format=evince  -i ngProcess graphvizLayers
+#+end_src
+#+RESULTS:
+: Running:: evince graphvizLayers.pdf &
+: Graph saved as 'graphvizLayers.pdf'
+: ngProcess: Processed All
+#+end_org """
 
 ####+BEGIN: b:py3:cs:orgItem/basic :type "=Seed Setup= " :title "*Common Facilities*" :comment "General"
 """ #+begin_org

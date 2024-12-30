@@ -44,14 +44,15 @@ The output format can be any of pdf, svg, png, jpeg or gv format. Output in vari
 the bottom layer of the figure below.
 
 Input files are structured as *Named Graphs*. Named Graphs have two elements:
-1) *Graph specification function*. A python named function that takes no arguments and returns a type *graphviz.Digraph*
+1) *Graph specification function*. A python named function that takes no arguments and returns a type
+   *graphviz.Digraph* object.
 2) *Name*. The name is used to produce output files and is commonly the name of function (1) as well.
 
 The list of Named Graphs forms the *namedGraphsList* which becomes an argument to the *graphvizSeed.setup* function.
 
 The [[file:./py3/bin/exmpl-graphviz.cs]] in the bin directory can be used as a starting point and example. The examples
 directory contains many other examples. The images directory contains the input
-([[file:./py3/images/readme-graphviz.cs]])that produced the figure below.
+([[file:./py3/images/readme-graphviz.cs]]) that produced the figure below.
 
 ** Concept of Seeded-PyCS Input Files
 
@@ -94,7 +95,7 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 * A Hello World Example --- hello-graphviz.cs
 
 Below we shall walk through [[file:./py3/examples/hello-graphviz.cs]] which produces
- [[file:./py3/examples/hello.png.]]
+ [[file:./py3/examples/hello.png]].
 This is the equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
 which produces  https://graphviz.org/Gallery/directed/hello.html.
 
