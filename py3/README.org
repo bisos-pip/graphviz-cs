@@ -18,32 +18,33 @@ Standalone-BISOS-Package.
 
 * Abstract -- Concepts and Terminology
 
-Refering to the figure below, inputs are on the top and outputs are at the bottom.
+Referring to the figure below, inputs are on the top and outputs are at the bottom.
 
 ** Layerings
 
 The ellipses represent processing layers.
 
-- The *graphviz.org layer* takes DOT (graph description languag) input and produces graphs is a variety of formats.
+- The *graphviz.org layer* takes DOT (graph description language) input and produces graphs is a variety of formats.
   Graphviz is open source graph visualization software hosted at https://www.graphviz.org/.
 
 - The *Python Graphviz layer* builds on the graphviz.org layer and provides an interface to dot facilities in python.
   Python Graphviz software is hosted at https://github.com/xflr6/graphviz.
 
-- The *Seeded-PyCS Graphviz layer* builds on the Python Graphviz layer and provides a command-line interface to
-  python specifications of graphs. Seeded-PyCS Graphviz uses [[https://github.com/bisos-pip/pycs][bisos.PyCS]]. Seeded-PyCS Graphviz software is hosted at
-  https://github.com/bisos-pip/graphviz-cs.
+- The *Seeded-PyCS Graphviz layer* Seeded-PyCS Graphviz layer enhances the Python Graphviz layer by providing the
+  ability to include multiple graphs in one file (packaging) and by providing the ability to produce any desired
+  output format from the command-line. Seeded-PyCS Graphviz uses [[https://github.com/bisos-pip/pycs][bisos.PyCS]]. Seeded-PyCS Graphviz software is
+  hosted at https://github.com/bisos-pip/graphviz-cs.
 
 ** Named Graphs Input Files -- package-graphviz.cs
 
 Input files containing graph specifications (the top layer in the figure below) can reside anywhere in the file system
-and are typically named package-graphviz.cs where package convays a name for a grouping of graph specifications.
+and are typically named package-graphviz.cs where package conveys a name for a grouping of graph specifications.
 Execution of input files (say [[file:./py3/examples/exmpl-graphviz.cs]]) produces output in any or all of the output formats.
 The output format can be any of pdf, svg, png, jpeg or gv format. Output in various formats is shown as
 the bottom layer of the figure below.
 
 Input files are structured as *Named Graphs*. Named Graphs have two elements:
-1) *Graph specifictaion function*. A python named function that takes no arguments and returns a type *graphviz.Digraph*
+1) *Graph specification function*. A python named function that takes no arguments and returns a type *graphviz.Digraph*
 2) *Name*. The name is used to produce output files and is commonly the name of function (1) as well.
 
 The list of Named Graphs forms the *namedGraphsList* which becomes an argument to the *graphvizSeed.setup* function.
@@ -93,7 +94,7 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 * A Hello World Example --- hello-graphviz.cs
 
 Below we shall walk through [[file:./py3/examples/hello-graphviz.cs]] which produces
- [[file:./py3/examples/hello-graphviz.png.]]
+ [[file:./py3/examples/hello.png.]]
 This is the equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
 which produces  https://graphviz.org/Gallery/directed/hello.html.
 
@@ -197,7 +198,7 @@ of Polyexistentials]]
 * bisos.graphviz as a Standalone Piece of BISOS
 
 bisos.graphviz is a standalone piece of BISOS. It can be used as a self-contained
-Python package separate from BISOS. Follow the installtion and usage
+Python package separate from BISOS. Follow the installation and usage
 instructions below for your own use.
 
 
@@ -210,8 +211,8 @@ Additional information is also available in: [[http://www.by-star.net/PLPC/18004
 
 ** bisos.graphviz Blee-Panels
 
-bisos.graphviz Blee-Panles are in ./panels directory.
-From within Blee and BISOS these panles are accessible under the
+bisos.graphviz Blee-Panels are in ./panels directory.
+From within Blee and BISOS these panels are accessible under the
 Blee "Panels" menu.
 
 * Support
