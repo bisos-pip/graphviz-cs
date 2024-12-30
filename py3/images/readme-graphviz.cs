@@ -22,25 +22,6 @@ from bisos.graphviz import graphvizSeed
 ng = graphvizSeed.namedGraph
 
 
-####+BEGIN: b:py3:cs:func/typing :funcName "hello" :funcType "Typed" :deco "track"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /hello/  deco=track  [[elisp:(org-cycle)][| ]]
-#+end_org """
-@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def hello(
-####+END:
-) -> graphviz.Digraph:
-    """ #+begin_org
-** [[elisp:(org-cycle)][| *DocStr | ]
-    #+end_org """
-
-    g = graphviz.Digraph('G',)
-
-    g.edge('Hello', 'World')
-
-    return g
-
-
 ####+BEGIN: b:py3:cs:func/typing :funcName "graphvizLayers" :funcType "Typed" :deco "track"
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /graphvizLayers/  deco=track  [[elisp:(org-cycle)][| ]]
@@ -57,18 +38,18 @@ def graphvizLayers(
 
     with d.subgraph() as s:
         s.attr(rank='same')
-        s.node('seededCsSpec1', 'Graphviz-Spec\n 1\n', shape='rectangle', style='filled', fillcolor='green')
-        s.node('seededCsSpecDots', 'Graphviz-Spec\n ...', shape='rectangle', style='filled', fillcolor='green')
-        s.node('seededCsSpecN', 'Graphviz-Spec\n N', shape='rectangle', style='filled', fillcolor='green')
+        s.node('seededCsSpec1', 'Graphviz-Specifications-1\n\nhttps://github.com/bisos-pip/graphviz-cs\npy3/examples', shape='rectangle', style='filled', fillcolor='green')
+        s.node('seededCsSpecDots', 'Graphviz-Specifications-...\n\nhttps://github.com/bisos-pip/graphviz-cs\npy3/examples', shape='rectangle', style='filled', fillcolor='green')
+        s.node('seededCsSpecN', 'Graphviz-Specifications-N\n\nhttps://github.com/bisos-pip/graphviz-cs\npy3/examples', shape='rectangle', style='filled', fillcolor='green')
 
     with d.subgraph() as s:
         s.attr(rank='same')
-        s.node('graphvizSeed', 'Graphviz\n Seeded-PyCS\nhttps://github.com/bisos-pip/graphviz-cs', style='filled', fillcolor='darkseagreen3')
+        s.node('graphvizSeed', 'Graphviz\n Seeded-PyCS\n\nhttps://github.com/bisos-pip/graphviz-cs', style='filled', fillcolor='darkseagreen3')
         s.node('pycs', 'Python\nCommand Services\n (PyCS)\nhttps://github.com/bisos-pip/pycs', style='filled', fillcolor='darkseagreen3')
 
     with d.subgraph() as s:
         s.attr(rank='same')
-        s.node('pyGraphviz', 'Python Graphviz\nhttps://github.com/xflr6/graphviz', style='filled', fillcolor='deepskyblue')
+        s.node('pyGraphviz', 'Python Graphviz\n\nhttps://github.com/xflr6/graphviz', style='filled', fillcolor='deepskyblue')
 
     with d.subgraph() as s:
         s.attr(rank='same')
@@ -100,151 +81,6 @@ def graphvizLayers(
     return d
 
 
-
-####+BEGIN: b:py3:cs:func/typing :funcName "colors" :funcType "Typed" :deco "track"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /colors/  deco=track  [[elisp:(org-cycle)][| ]]
-#+end_org """
-@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def colors(
-####+END:
-) -> graphviz.Digraph:
-    """ #+begin_org
-** [[elisp:(org-cycle)][| *DocStr | ]
-    #+end_org """
-
-    g = graphviz.Graph()
-
-    red, green, blue = 64, 224, 208
-    assert f'#{red:x}{green:x}{blue:x}' == '#40e0d0'
-
-    g.node('RGB: #40e0d0', style='filled', fillcolor='#40e0d0')
-
-    g.node('RGBA: #ff000042', style='filled', fillcolor='#ff000042')
-
-    g.node('HSV: 0.051 0.718 0.627', style='filled', fillcolor='0.051 0.718 0.627')
-
-    g.node('name: deeppink', style='filled', fillcolor='deeppink')
-
-    return g
-
-####+BEGIN: b:py3:cs:func/typing :funcName "fsm" :funcType "Typed" :deco "track"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /fsm/  deco=track  [[elisp:(org-cycle)][| ]]
-#+end_org """
-@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def fsm(
-####+END:
-) -> graphviz.Digraph:
-    """ #+begin_org
-** [[elisp:(org-cycle)][| *DocStr | ] https://graphviz.org/Gallery/directed/fsm.html
-    #+end_org """
-
-    f = graphviz.Digraph('finite_state_machine')
-    f.attr(rankdir='LR', size='8,5')
-
-    f.attr('node', shape='doublecircle')
-    f.node('LR_0')
-    f.node('LR_3')
-    f.node('LR_4')
-    f.node('LR_8')
-
-    f.attr('node', shape='circle')
-    f.edge('LR_0', 'LR_2', label='SS(B)')
-    f.edge('LR_0', 'LR_1', label='SS(S)')
-    f.edge('LR_1', 'LR_3', label='S($end)')
-    f.edge('LR_2', 'LR_6', label='SS(b)')
-    f.edge('LR_2', 'LR_5', label='SS(a)')
-    f.edge('LR_2', 'LR_4', label='S(A)')
-    f.edge('LR_5', 'LR_7', label='S(b)')
-    f.edge('LR_5', 'LR_5', label='S(a)')
-    f.edge('LR_6', 'LR_6', label='S(b)')
-    f.edge('LR_6', 'LR_5', label='S(a)')
-    f.edge('LR_7', 'LR_8', label='S(b)')
-    f.edge('LR_7', 'LR_5', label='S(a)')
-    f.edge('LR_8', 'LR_6', label='S(b)')
-    f.edge('LR_8', 'LR_5', label='S(a)')
-
-    return f
-
-
-####+BEGIN: b:py3:cs:func/typing :funcName "g_c_n" :funcType "Typed" :deco "track"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /g_c_n/  deco=track  [[elisp:(org-cycle)][| ]]
-#+end_org """
-@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def g_c_n(
-####+END:
-) -> graphviz.Digraph:
-    """ #+begin_org
-** [[elisp:(org-cycle)][| *DocStr | ] https://www.graphviz.org/Gallery/gradient/g_c_n.html
-    #+end_org """
-
-    g = graphviz.Graph('G')
-    g.attr(bgcolor='purple:pink', label='agraph', fontcolor='white')
-
-    with g.subgraph(name='cluster1') as c:
-        c.attr(fillcolor='blue:cyan', label='acluster', fontcolor='white',
-               style='filled', gradientangle='270')
-        c.attr('node', shape='box', fillcolor='red:yellow',
-               style='filled', gradientangle='90')
-        c.node('anode')
-
-    return g
-
-
-####+BEGIN: b:py3:cs:func/typing :funcName "structs" :funcType "Typed" :deco "track"
-""" #+begin_org
-*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-Typed  [[elisp:(outline-show-subtree+toggle)][||]] /structs/  deco=track  [[elisp:(org-cycle)][| ]]
-#+end_org """
-@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
-def structs(
-####+END:
-) -> graphviz.Digraph:
-    """ #+begin_org
-** [[elisp:(org-cycle)][| *DocStr | ] https://www.graphviz.org/doc/info/shapes.html#html
-    #+end_org """
-
-    s = graphviz.Digraph('structs',
-                         node_attr={'shape': 'plaintext'})
-
-    s.node('struct1', '''<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-      <TR>
-        <TD>left</TD>
-        <TD PORT="f1">middle</TD>
-        <TD PORT="f2">right</TD>
-      </TR>
-    </TABLE>>''')
-    s.node('struct2', '''<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
-      <TR>
-        <TD PORT="f0">one</TD>
-        <TD>two</TD>
-      </TR>
-    </TABLE>>''')
-    s.node('struct3', '''<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
-      <TR>
-        <TD ROWSPAN="3">hello<BR/>world</TD>
-        <TD COLSPAN="3">b</TD>
-        <TD ROWSPAN="3">g</TD>
-        <TD ROWSPAN="3">h</TD>
-      </TR>
-      <TR>
-        <TD>c</TD>
-        <TD PORT="here">d</TD>
-        <TD>e</TD>
-      </TR>
-      <TR>
-        <TD COLSPAN="3">f</TD>
-      </TR>
-    </TABLE>>''')
-
-    s.edges([('struct1:f1', 'struct2:f0'), ('struct1:f2', 'struct3:here')])
-
-    return s
-
 ####+BEGIN: b:py3:cs:orgItem/basic :type "=Seed Setup= " :title "*Common Facilities*" :comment "General"
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  =Seed Setup=  [[elisp:(outline-show-subtree+toggle)][||]] *Common Facilities* General  [[elisp:(org-cycle)][| ]]
@@ -252,12 +88,7 @@ def structs(
 ####+END:
 
 namedGraphsList = [
-    ng("hello", func=hello),   #
     ng("graphvizLayers", func=graphvizLayers),   #
-    ng("colors", func=colors),   #
-    ng("fsm", func=fsm),   #
-    ng("g_c_n", func=g_c_n),   #
-    ng("structs", func=structs),   #
 ]
 
 graphvizSeed.setup(
