@@ -1,4 +1,4 @@
-#+title: bisos.graphviz: Python graphviz wrapped into BISOS CS and Seed Machinaries
+#+title: bisos.graphviz: Seeded-PyCS Graphviz
 #+DATE: <2024-02-19 Mon 16:27>
 #+AUTHOR: Mohsen BANAN
 #+OPTIONS: toc:4
@@ -9,20 +9,81 @@
 
 * Overview
 
-bisos.graphviz ()
+bisos.graphviz (Seeded-PyCS Graphviz) is Python graphviz wrapped into BISOS Command-Services and Seed Machinaries.
 
 bisos.graphviz is a python package that uses the PyCS-Framework for processing
-graphviz specifications in python.
+graphviz specifications in python. It is a layer on top of Python Graphviz ---
+https://github.com/xflr6/graphviz --- which provides a python interface
+to the DOT language of the Graphviz graph drawing software.
 It is a BISOS-Capability and a Standalone-BISOS-Package.
 
-/bisos.graphviz/ is based on PyCS-Foundation and can be used both as a Command and
+/bisos.graphviz/ is based on PyCS-Foundation ([[https://github.com/bisos-pip/pycs][bisos.PyCS]]) and can be used both as a Command and
 as a Service (invoke/perform model of remote operations) using RPYC for central
-management of multiple systems.
+management of multiple systems. The Remote (Service) aspect of PyCS is not applicable to bisos.graphviz.
+
+* Abstract -- Concepts and Terminology
+
+Refering to the figure below, inputs are on the top and outputs are the bottom.
+
+** Layerings
+
+The ellipses represent processing layers.
+
+- The *graphviz.org layer* takes DOT (graph description languag) input and produces graphs is a variety of formats.
+  Graphviz is open source graph visualization software hosted at https://www.graphviz.org/.
+
+- The *Python Graphviz layer* builds on the graphviz.org layer and provides an interface to dot facilities in python.
+  Python Graphviz software is hosted at
+
+- The *Seeded-PyCS Graphviz layer* builds on the Python Graphviz layer and provides a command-line interface to
+  python specifications of graphs. Seeded-PyCS Graphviz uses [[https://github.com/bisos-pip/pycs][bisos.PyCS]]. Seeded-PyCS Graphviz software is hosted at
+  https://github.com/bisos-pip/graphviz-cs.
+
+** Named Graphs Input Files -- package-graphviz.cs
+
+Input files containing graph specifications (the top layer in the figure below) can reside anywhere in the file system
+and are typically named package-graphviz.cs where package convays a name for a grouping of graph specifications.
+Execution of input files (say package-graphviz.cs) produces output in any or all of the output formats.
+The output format can be any of pdf, svg, png, jpeg or gv format. Output in various formats is shown as
+the bottom layer of the figure below.
+
+Input files are structured as Named Graphs. Named Graphs have two elements:
+1) Graph specifictaion function. A python named function that takes no arguments and returns a type *graphviz.Digraph*
+2) A name. The name is used to produce output files and is commonly the name of function (1) as well.
+
+The list of Named Graphs forms the *namedGraphsList* which becomes an argument to the *graphvizSeed.setup* function.
+
+The exmpl-graphviz.cs in the bin directory can be used as a starting point and example. The examples directory
+contains many other examples. The images directory contains the input that produced the figure below.
+
+** Concept of Seeded-PyCS Input Files
+
+PyCS provides a framework for creating mapping python functions to the command line (similar to click).
+
+Often it make good sense to package the input with its processing capabilities in one place. We do this using the
+Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
+
+
+
+#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
+#+NAME:   fig:images/graphvizLayers
+#+ATTR_HTML: :width 1100px
+[[./py3/images/graphvizLayers.png]]
+
+#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
+#+NAME:   fig:images/graphvizLayers
+#+ATTR_HTML: :width 1100px
+[[./images/graphvizLayers.png]]
+
 
 
 * Table of Contents     :TOC:
 - [[#overview][Overview]]
 - [[#abstract----concepts-and-terminology][Abstract -- Concepts and Terminology]]
+  - [[#layerings][Layerings]]
+  - [[#named-graphs-input-files----package-graphvizcs][Named Graphs Input Files -- package-graphviz.cs]]
+  - [[#concept-of-seeded-pycs-input-files][Concept of Seeded-PyCS Input Files]]
+- [[#abstract----concepts-and-terminology-1][Abstract -- Concepts and Terminology]]
 - [[#part-of-bisos-----bystar-internet-services-operating-system][Part of BISOS --- ByStar Internet Services Operating System]]
 - [[#bisosgraphviz-is-a-command-services-pycs-facility][bisos.graphviz is a Command Services (PyCS) Facility]]
 -  [[#uses-of-bisosgraphviz][Uses of bisos.graphviz]]
@@ -55,11 +116,6 @@ Examples directory
 #+NAME:   fig:images/graphvizLayers
 #+ATTR_HTML: :width 1100px
 [[./images/graphvizLayers.png]]
-
-
-
-The graphviz below provides an overview of headers used in MTDT-Distributions. See
-https://github.com/bx-blee/mtdt-distribution for more details.
 
 
 * Part of BISOS --- ByStar Internet Services Operating System

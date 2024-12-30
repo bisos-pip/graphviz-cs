@@ -155,6 +155,7 @@ def examples_csu(
             cmnd('ngProcess', pars=od([('format', 'svg'),]), args=f"{each}", comment=f" # Produces {each}.svg")
             cmnd('ngProcess', pars=od([('format', 'jpg'),]), args=f"{each}", comment=f" # Produces {each}.jpg")
             cmnd('ngProcess', pars=od([('format', 'png'),]), args=f"{each}", comment=f" # Produces {each}.png")
+            cmnd('ngProcess', pars=od([('format', 'gv'),]), args=f"{each}", comment=f" # Produces {each}.gv smae as .dot")
             cmnd('ngProcess', pars=od([('format', 'evince'),]), args=f"{each}", comment=f" # Produces {each}.pdf + evince")
             cmnd('ngProcess', pars=od([('format', 'all'),]), args=f"{each}", comment=f" # Produces ALL formats for {each}")
 
@@ -264,7 +265,7 @@ class ngProcess(cs.Cmnd):
             graph = thisGraph.func()
 
             if format == "all":
-                formatList = [ "pdf", "svg", "jpg", "png",]
+                formatList = [ "pdf", "svg", "jpg", "png", "gv",]
             else:
                 formatList = [ format ]
 
