@@ -19,7 +19,7 @@ from bisos.b import cs
 import graphviz
 
 from bisos.graphviz import graphvizSeed
-ng = graphvizSeed.namedGraph
+ng = graphvizSeed.namedGraph  # just an abbreviation
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "hello" :funcType "Typed" :deco "track"
 """ #+begin_org
@@ -31,8 +31,8 @@ def hello(
 ) -> graphviz.Digraph:
     """ #+begin_org
 ** [[elisp:(org-cycle)][| *DocStr | ] Simple graph saying Hello World.
-    Equivalent of  https://github.com/xflr6/graphviz/blob/master/examples/hello.py
-    Which produces https://graphviz.org/Gallery/directed/hello.html
+    Equivalent of  [[https://github.com/xflr6/graphviz/blob/master/examples/hello.py]]
+    Which produces [[https://graphviz.org/Gallery/directed/hello.html]]
     #+end_org """
 
     g = graphviz.Digraph('G',)
@@ -40,6 +40,18 @@ def hello(
     g.edge('Hello', 'World')
 
     return g
+
+""" #+begin_org
+#+begin_src sh :results output :session shared
+hello-graphviz.cs --format=evince  -i ngProcess all
+#+end_src
+#+RESULTS:
+: Running:: evince hello.pdf &
+: Graph saved as 'hello.pdf'
+: ngProcess: Processed All
+#+end_org """
+
+
 
 ####+BEGIN: b:py3:cs:orgItem/basic :type "=Seed Setup= " :title "*Common Facilities*" :comment "General"
 """ #+begin_org
