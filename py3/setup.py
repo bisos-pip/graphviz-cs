@@ -2,7 +2,7 @@
 
 # Template File:  "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/setup.py"
 
-####+BEGIN: bx:dblock:global:file-insert :mode python :file "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/commonSetupCode.py"
+####+BEGINNOT: bx:dblock:global:file-insert :mode python :file "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/commonSetupCode.py"
 
 import setuptools
 import re
@@ -16,25 +16,25 @@ def pkgName():
     return f"bisos.{grandMother}"
 
 def description():
-    """ Extract title from ./README.org which is expected to have a title: line. """
+    """ Extract title from ./_description.org which is expected to have a title: line. """
     try:
-        with open('./README.org') as file:
+        with open('./_description.org') as file:
             while line := file.readline():
                 if match := re.search(r'^#\+title: (.*)',  line.rstrip()):
                     return match.group(1)
-                return "MISSING TITLE in ./README.org"
+                return "MISSING TITLE in ./_description.org"
     except IOError:
-        return  "ERROR: Could not read ./README.org file."
+        return  "ERROR: Could not read ./_description.org file."
 
 def longDescription():
-    """ Convert README.org to README.rst. """
+    """ Convert _description.org to .rst. """
     try:
         import pypandoc
     except ImportError:
         result = "WARNING: pypandoc module not found, could not convert to RST"
         return result
-    if (result := pypandoc.convert_file('README.org', 'rst')) is None:
-        result = "ERROR: pypandoc.convert_file('README.org', 'rst') Failed."
+    if (result := pypandoc.convert_file('_description.org', 'rst')) is None:
+        result = "ERROR: pypandoc.convert_file('_description.org', 'rst') Failed."
     return result
 
 ####+END:
@@ -42,7 +42,7 @@ def longDescription():
 # :curDevVer "0.92" :pypiNextVer "0.95"
 ####+BEGIN: b:py3:pypi/nextVersion :increment 0.01
 
-# ./pypiUploadVer does not exist -- pypiNextVer=0.11 -- installedVersion=0.1
+# ./pypiUploadVer does not exist -- pypiNextVer=0.15 -- installedVersion=0.1
 def pkgVersion():
         return '0.1'  # Version Nu Of Installed Pkg
 
