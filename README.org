@@ -4,8 +4,8 @@
 #+OPTIONS: toc:4
 
 ~Blee Panel Controls~: [[elisp:(show-all)][Show-All]] | [[elisp:(org-shifttab)][Overview]] | [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] | [[elisp:(save-buffer)][Save]]  | [[elisp:(kill-buffer)][Quit]]  | [[elisp:(bury-buffer)][Bury]]  \\
-~Panel Links~:  [[file:../_nodeBase_/fullUsagePanel-en.org][Blee Panel]]  | [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org][Github Panel]]
-~See Also~: [[https://pypi.org/project/bisos.facter][At PYPI]] | [[https://github.com/bisos-pip/pycs][bisos.PyCS]] | [[https://github.com/bisos-pip/cmdb][bisos.cmdb]]
+~Panel Links~:   [[file:./py3/panels/bisos.graphviz/_nodeBase_/fullUsagePanel-en.org][Repo Blee Panel]]
+~See Also~: [[https://pypi.org/project/bisos.graphviz][At PYPI]] | [[https://github.com/bisos-pip/pycs][bisos.PyCS]]
 
 * Overview
 
@@ -16,8 +16,8 @@ It is a layer on top of Python Graphviz --- https://github.com/xflr6/graphviz --
 python interface to the DOT language of the Graphviz graph drawing software. It is a BISOS-Capability and a
 Standalone-BISOS-Package.
 
-#+BEGIN: b:org:pypi/documentationAtGithub :model "basic"
-# Some Text Comes Here
+#+BEGIN: b:org:pypi/pkgDocumentation :pkgName "graphviz-cs" :comment "basic"
+
 #+END:
 
 * Abstract -- Concepts and Terminology
@@ -72,11 +72,6 @@ Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 #+NAME:   fig:images/graphvizLayers
 #+ATTR_HTML: :width 1100px
 [[./py3/images/graphvizLayers.png]]
-
-#+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
-#+NAME:   fig:images/graphvizLayers
-#+ATTR_HTML: :width 1100px
-[[./images/graphvizLayers.png]]
 
 ----------------------------
 
