@@ -3,7 +3,7 @@
 #+AUTHOR: Mohsen BANAN
 #+OPTIONS: toc:4
 
-#+BEGIN: b:org:pypi:readme/topControls :pkgName "graphviz-cs" :comment "basic"
+#+BEGIN: b:org:pypi:readme/topControls :pkgName "graphviz" :comment "basic"
 
 |----------------------+------------------------------------------------------------------|
 | ~Blee Panel Controls~: | [[elisp:(show-all)][Show-All]] : [[elisp:(org-shifttab)][Overview]] : [[elisp:(progn (org-shifttab) (org-content))][Content]] : [[elisp:(delete-other-windows)][(1)]] : [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] : [[elisp:(save-buffer)][Save]]  : [[elisp:(kill-buffer)][Quit]]  : [[elisp:(bury-buffer)][Bury]] |
@@ -73,14 +73,14 @@ click).
 Often it make good sense to package the input with its processing capabilities in one place. We do this using the
 Seeded-PyCS design pattern. Seeded-PyCS-Graphviz is such an example.
 
------------------------------
+
 
 #+CAPTION:  Graphviz C-c C-x C-v (org-toggle-inline-images)
 #+NAME:   fig:images/graphvizLayers
 #+ATTR_HTML: :width 1100px
 [[./py3/images/graphvizLayers.png]]
 
-----------------------------
+
 
 * Table of Contents     :TOC:
 - [[#overview][Overview]]
@@ -230,15 +230,17 @@ author/maintainer\\
 [[http://mohsen.1.banan.byname.net/contact]]
 
 
-# ###+BEGIN: blee:bxPanel:footerOrgParams
+# ###+BEGIN: blee:bxPanel:footerOrgParams :panelType "readme"
 #+STARTUP: overview
 #+STARTUP: lognotestate
 #+STARTUP: inlineimages
 #+SEQ_TODO: TODO WAITING DELEGATED | DONE DEFERRED CANCELLED
 #+TAGS: @desk(d) @home(h) @work(w) @withInternet(i) @road(r) call(c) errand(e)
-#+CATEGORY: N:mtdt-conceptAndDesign
-# ###+END
-# ###+BEGIN: blee:bxPanel:footerEmacsParams :primMode "org-mode"
+#+CATEGORY: U:graphviz-cs
+
+# ###+END:
+
+# ###+BEGIN: blee:bxPanel:footerEmacsParams :primMode "org-mode" :panelType "readme"
 # Local Variables:
 # eval: (setq-local toc-org-max-depth 4)
 # eval: (setq-local ~selectedSubject "noSubject")
