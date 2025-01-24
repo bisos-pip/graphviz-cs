@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Template File:  "/bisos/apps/defaults/begin/templates/purposed/pyModule/python/setup.py"
+# Template File:  /bisos/apps/defaults/begin/templates/purposed/pyModule/python/setup.py
 # Blee Panel: /bisos/git/auth/bxRepos/blee-binders/bisos-core/bisos-pip/bisos.pycs/pipPackaging/_nodeBase_/fullUsagePanel-en.org
 
 # b:py3:pypi:setup/pkgName Arguments  :pkgName "somePkg" :pkgNameSpace "bisos"
