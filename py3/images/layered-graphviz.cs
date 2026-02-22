@@ -84,7 +84,7 @@ def graphvizLayers(
 
 """ #+begin_org
 #+begin_src sh :results output :session shared
-readme-graphviz.cs --format=evince  -i ngProcess graphvizLayers
+layered-graphviz.cs --format=evince  -i ngProcess graphvizLayers
 #+end_src
 #+RESULTS:
 : Running:: evince graphvizLayers.pdf &

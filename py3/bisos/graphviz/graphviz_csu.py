@@ -89,6 +89,7 @@ import subprocess
 # import sys
 from bisos.graphviz import graphvizSeed
 
+import  pathlib
 
 ####+BEGIN: b:py3:cs:orgItem/section :title "CSU-Lib Examples" :comment "-- Providing examples_csu"
 """ #+begin_org
@@ -162,6 +163,12 @@ def examples_csu(
         cs.examples.menuSection(f'=Process ALL NamedGraphs in ALL Formats=')
         cmnd('ngProcess', pars=od([('format', 'all'),]), args="all", comment=f" # Process/Update All")
         cmnd('ngProcess', pars=od([('format', 'all'),]), args=f"{' '.join(namedGraphNames)}", comment=f" # All")
+
+        cs.examples.menuSection(f'=Clean ALL NamedGraphs in ALL Formats=')
+        cmnd('ngClean', pars=od([('format', 'all'),]), args="all", comment=f" # Clean all formats except pdf and svg")
+        cmnd('ngClean', pars=od([('format', 'full'),]), args="all", comment=f" # Clean ALL formats")
+        cmnd('ngClean', pars=od([('format', 'all'),]), args=f"{' '.join(namedGraphNames)}", comment=f" # All")
+
 
     # literal("hostname --fqdn", comment=" # usually used as control/me")
 
@@ -300,6 +307,91 @@ class ngProcess(cs.Cmnd):
             argDescription="List of Names of Graphs."
         )
         return cmndArgsSpecDict
+
+
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "ngClean" :comment "" :extent "verify" :ro "cli" :parsMand "" :parsOpt "format" :argsMin 1 :argsMax 9999 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<ngClean>>  =verify= parsOpt=format argsMin=1 argsMax=9999 ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class ngClean(cs.Cmnd):
+    cmndParamsMandatory = [ ]
+    cmndParamsOptional = [ 'format', ]
+    cmndArgsLen = {'Min': 1, 'Max': 9999,}
+
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmnd(self,
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             format: typing.Optional[str]=None,  # Cs Optional Param
+             argsList: typing.Optional[list[str]]=None,  # CsArgs
+    ) -> b.op.Outcome:
+
+        failed = b_io.eh.badOutcome
+        callParamsDict = {'format': format, }
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
+            return failed(cmndOutcome)
+        cmndArgsSpecDict = self.cmndArgsSpec()
+        format = csParam.mappedValue('format', format)
+####+END:
+        self.cmndDocStr(f""" #+begin_org
+** [[elisp:(org-cycle)][| *CmndDesc:* | ]]  Process specified namedGraphs in specified formats.
+        'all' can be used for namedGraphs and formats.
+        #+end_org """)
+
+        cmndArgsSpecDict = self.cmndArgsSpec()
+        cmndArgs = self.cmndArgsGet("0&9999", cmndArgsSpecDict, argsList)
+
+        if cmndArgs[0] == "all":
+            cmndArgs = graphvizSeed.graphvizSeedInfo.namedGraphNames()
+
+        for eachGraphName in cmndArgs:
+            thisGraph = graphvizSeed.graphvizSeedInfo.graphByName(eachGraphName)
+
+            if thisGraph == None:
+                return failed(cmndOutcome)
+
+            if format == "all":
+                formatList = [ "jpg", "png", "gv",]
+            elif format == "full":
+                formatList = [ "pdf", "svg", "jpg", "png", "gv",]
+            else:
+                formatList = [ format ]
+
+            for  eachFormat in formatList:
+                fileName = f"{eachGraphName}.{eachFormat}"
+                filePath = pathlib.Path(fileName)
+                if filePath.exists():
+                    filePath.unlink()
+                    print(f"File '{filePath}' deleted successfully.")
+                else:
+                    print(f"File '{filePath}' does not exist. Cleaning skipped.")
+
+                # print(f"Graph cleaning  as {eachFormat} {eachGraphName} {fileName}")
+
+            result = f"ngClean: Cleaned All --cleaned formats={formatList}"
+
+        return(cmndOutcome.set(opResults=result))
+
+####+BEGIN: b:py3:cs:method/args :methodName "cmndArgsSpec" :methodType "anyOrNone" :retType "bool" :deco "default" :argsList "self"
+    """ #+begin_org
+**  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  Mtd-T-anyOrNone [[elisp:(outline-show-subtree+toggle)][||]] /cmndArgsSpec/ deco=default  deco=default  [[elisp:(org-cycle)][| ]]
+    #+end_org """
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+    def cmndArgsSpec(self, ):
+####+END:
+        """  #+begin_org
+*** [[elisp:(org-cycle)][| *cmndArgsSpec:* | ]] arg0 is ~inFile~
+        #+end_org """
+
+        cmndArgsSpecDict = cs.arg.CmndArgsSpecDict()
+        cmndArgsSpecDict.argsDictAdd(
+            argPosition="0&9999",
+            argName="namedGraph",
+            argChoices=[],
+            argDescription="List of Names of Graphs."
+        )
+        return cmndArgsSpecDict
+
 
 
 ####+BEGIN: b:py3:cs:framework/endOfFile :basedOn "classification"

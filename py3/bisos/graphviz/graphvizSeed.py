@@ -81,6 +81,8 @@ from bisos.common import csParam
 import collections
 # ####+END:
 
+import atexit
+
 ####+BEGIN: bx:cs:py3:section :title "Public Classes"
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  /Section/    [[elisp:(outline-show-subtree+toggle)][||]] *Public Classes*  [[elisp:(org-cycle)][| ]]
@@ -249,6 +251,43 @@ def setup(
     graphvizSeedInfo.seedType = seedType
     graphvizSeedInfo.namedGraphsList  = namedGraphsList
     graphvizSeedInfo.examplesHook  = examplesHook
+
+####+BEGIN: b:py3:cs:func/typing :funcName "plantWithWhich" :funcType "extTyped" :comment "expects seedGraphviz.cs" :deco "track"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-extTyped [[elisp:(outline-show-subtree+toggle)][||]] /plantWithWhich/  expects seedSbom.cs deco=track  [[elisp:(org-cycle)][| ]]
+#+end_org """
+@cs.track(fnLoc=True, fnEntry=True, fnExit=True)
+def plantWithWhich(
+####+END:
+        asExpected: str,
+) -> None:
+    """ #+begin_org
+** [[elisp:(org-cycle)][| *DocStr | ] shim over b.importFile.plantWithWhich
+    #+end_org """
+
+    expected = 'seedGraphviz.cs'
+
+    if asExpected != expected:
+        b_io.pr(f"plantWithWhich:: Expected {expected} Got: {asExpected}")
+        return
+
+    b.importFile.plantWithWhich(expected)
+
+
+####+BEGIN: b:py3:cs:func/typing :funcName "atexit_plantWithWhich" :funcType "extTyped" :comment "expects seedGraphviz.cs" :deco "atexit.register"
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-extTyped [[elisp:(outline-show-subtree+toggle)][||]] /atexit_plantWithWhich/  expects seedGraphviz.cs deco=atexit.register  [[elisp:(org-cycle)][| ]]
+#+end_org """
+@atexit.register
+def atexit_plantWithWhich(
+####+END:
+        asExpected: str="seedGraphviz.cs",
+) -> None:
+    """ #+begin_org
+** [[elisp:(org-cycle)][| *DocStr | ] shim over b.importFile.plantWithWhich
+    #+end_org """
+
+    plantWithWhich(asExpected)
 
 
 ####+BEGIN: b:py3:cs:framework/endOfFile :basedOn "classification"
