@@ -212,7 +212,10 @@ def graphWrite(
 
     fileName = f"{fileBase}.{effectiveFileType}"
 
-    graph.render(fileBase, format=effectiveFileType, cleanup=True)
+    if effectiveFileType == "svg":
+        subprocess.call(f"dot -Tsvg:cairo {fileBase}.gv -o {fileName}", shell=True)
+    else:
+        graph.render(fileBase, format=effectiveFileType, cleanup=True)
 
     if fileType == "evince":
         # time.sleep(0.4)
@@ -272,7 +275,7 @@ class ngProcess(cs.Cmnd):
             graph = thisGraph.func()
 
             if format == "all":
-                formatList = [ "pdf", "svg", "jpg", "png", "gv",]
+                formatList = ["gv", "pdf", "svg", "jpg", "png",]
             else:
                 formatList = [ format ]
 
