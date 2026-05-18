@@ -152,11 +152,12 @@ def examples_csu(
 
         for each in namedGraphNames:
             cs.examples.menuSection(f'=Process {each} NamedGraph=')
+            cmnd('ngProcess', pars=od([('format', 'odg'),]), args=f"{each}", comment=f" # Produces {each}.odg editable by liboffice draw")
             cmnd('ngProcess', pars=od([('format', 'pdf'),]), args=f"{each}", comment=f" # Produces {each}.pdf")
             cmnd('ngProcess', pars=od([('format', 'svg'),]), args=f"{each}", comment=f" # Produces {each}.svg")
             cmnd('ngProcess', pars=od([('format', 'jpg'),]), args=f"{each}", comment=f" # Produces {each}.jpg")
             cmnd('ngProcess', pars=od([('format', 'png'),]), args=f"{each}", comment=f" # Produces {each}.png")
-            cmnd('ngProcess', pars=od([('format', 'gv'),]), args=f"{each}", comment=f" # Produces {each}.gv smae as .dot")
+            cmnd('ngProcess', pars=od([('format', 'gv'),]), args=f"{each}", comment=f" # Produces {each}.gv same as .dot")
             cmnd('ngProcess', pars=od([('format', 'evince'),]), args=f"{each}", comment=f" # Produces {each}.pdf + evince")
             cmnd('ngProcess', pars=od([('format', 'all'),]), args=f"{each}", comment=f" # Produces ALL formats for {each}")
 
@@ -213,7 +214,41 @@ def graphWrite(
     fileName = f"{fileBase}.{effectiveFileType}"
 
     if effectiveFileType == "svg":
-        subprocess.call(f"dot -Tsvg:cairo {fileBase}.gv -o {fileName}", shell=True)
+        # Write .gv source to cwd so dot can find it
+        with open(f"{fileBase}.gv", 'w') as _gvf:
+            _gvf.write(graph.source)
+        # Use svg:svg:core to emit native <text> elements (cairo converts text to paths)
+        subprocess.call(f"dot -Tsvg:svg:core {fileBase}.gv -o {fileName}", shell=True)
+        # Fix viewBox to encompass full content and scale display size to fit letter-landscape
+        import re as _re
+        with open(fileName, 'r') as _f:
+            _svgContent = _f.read()
+        _dimMatch = _re.search(r'width="([\d.]+)pt"\s+height="([\d.]+)pt"', _svgContent)
+        if _dimMatch:
+            _origW, _origH = float(_dimMatch.group(1)), float(_dimMatch.group(2))
+            # Set viewBox to full content extent so nothing is clipped
+            _svgContent = _re.sub(r'viewBox="[^"]*"', f'viewBox="0 0 {_origW:.2f} {_origH:.2f}"', _svgContent)
+            # Scale display size to max 792pt (11in) wide
+            _maxW = 792.0
+            _scale = _maxW / _origW
+            _newW, _newH = _origW * _scale, _origH * _scale
+            _svgContent = _re.sub(r'width="[^"]*"', f'width="{_newW:.0f}pt"', _svgContent, count=1)
+            _svgContent = _re.sub(r'height="[^"]*"', f'height="{_newH:.0f}pt"', _svgContent, count=1)
+            with open(fileName, 'w') as _f:
+                _f.write(_svgContent)
+    elif effectiveFileType == "pdf":
+        # Write .gv source to cwd so dot can find it
+        with open(f"{fileBase}.gv", 'w') as _gvf:
+            _gvf.write(graph.source)
+        subprocess.call(f"dot -Tpdf {fileBase}.gv -o {fileName}", shell=True)
+    elif effectiveFileType == "odg":
+        # Write .gv source to cwd so dot can find it
+        with open(f"{fileBase}.gv", 'w') as _gvf:
+            _gvf.write(graph.source)
+        # Generate PDF with native text, then import into LibreOffice Draw as editable ODG
+        _pdfFile = f"{fileBase}.pdf"
+        subprocess.call(f"dot -Tpdf {fileBase}.gv -o {_pdfFile}", shell=True)
+        subprocess.call(f'libreoffice --headless --infilter="draw_pdf_import" --convert-to odg {_pdfFile}', shell=True)
     else:
         graph.render(fileBase, format=effectiveFileType, cleanup=True)
 
@@ -275,7 +310,7 @@ class ngProcess(cs.Cmnd):
             graph = thisGraph.func()
 
             if format == "all":
-                formatList = ["gv", "pdf", "svg", "jpg", "png",]
+                formatList = ["gv", "pdf", "svg", "odg", "jpg", "png",]
             else:
                 formatList = [ format ]
 
@@ -356,7 +391,7 @@ class ngClean(cs.Cmnd):
             if format == "all":
                 formatList = [ "jpg", "png", "gv",]
             elif format == "full":
-                formatList = [ "pdf", "svg", "jpg", "png", "gv",]
+                formatList = [ "pdf", "svg", "jpg", "png", "gv", "odg"]
             else:
                 formatList = [ format ]
 
