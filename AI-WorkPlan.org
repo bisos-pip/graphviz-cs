@@ -52,9 +52,9 @@ Goal: Describe what the goal of this stage is.
 
 * Stage 1 TODOs
 ** +
-** TODO [#A] Example of a work-item for AI :ai:
+** TODO [#A] Add title  and caption to each graph
 SCHEDULED: <2026-06-09 Tue>
-Description of a work-item
+Add to graphvis title and caption for each graph for latex dblock
 ----- AI Results: ------
 ** -
 
