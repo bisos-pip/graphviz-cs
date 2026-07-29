@@ -52,10 +52,54 @@ Goal: Describe what the goal of this stage is.
 
 * Stage 1 TODOs
 ** +
-** TODO [#A] Add title  and caption to each graph
+** DONE [#A] Add title  and caption to each graph
+CLOSED: [2026-07-28 Tue]
 SCHEDULED: <2026-06-09 Tue>
 Add to graphvis title and caption for each graph for latex dblock
 ----- AI Results: ------
+Added optional =title= and =caption= kwargs to the =namedGraph()=
+factory and matching properties on =NamedGraph=. Added a new
+=--format=lcnt= that writes sibling =<name>.title= and =<name>.caption=
+plain-text files (following the phase1plus convention observed at
+=/git/rana/site-status-scripts/lcnt/lgcc/t-mobile/permanent/rana/siteStatus/initialDesign/images=).
+Downstream LCNT-framework consumers (LaTeX =\input{}=, org-mode
+=#+INCLUDE=, Blee panels) wrap the raw text in whatever envelope they
+need --- graphviz-cs stays neutral about consumers.
+
+Semantics:
+- If both =title= and =caption= are =None=, nothing is written (silent
+  no-op per Q3). A downstream =\input= then fails visibly --- the
+  correct signal.
+- If one is =None= and the other set, only the non-None sidecar is
+  produced.
+- =--format=all= now includes =lcnt= alongside the graphics formats.
+- =ngClean --format=all= removes =title=/=caption= alongside
+  =jpg=/=png=/=gv=. =ngClean --format=full= removes them too. New
+  =ngClean --format=lcnt= removes only the two sidecars.
+
+Files changed:
+- =py3/bisos/graphviz/graphvizSeed.py= --- =NamedGraph.__init__= plus
+  =title=/=caption= properties; =namedGraph()= factory kwargs.
+- =py3/bisos/graphviz/graphviz_csu.py= --- =ngProcess= dispatches
+  =lcnt= before =graphWrite= (metadata sidecars are semantically
+  distinct from graphviz-native renders and don't need the =Digraph=
+  built if =lcnt= is the only format); =ngClean= gains =lcnt= as its
+  own format and adds =title=/=caption= to =all= and =full=; examples
+  menu gains the =lcnt= per-graph line.
+
+Also applied to the installed venv copy at
+=/bisos/venv/py3/bisos3/lib/python3.11/site-packages/bisos/graphviz/=
+(non-editable install --- same two-copy rule as =bisos.b=).
+
+Verified end-to-end with =aiActivity-graphviz.pcs= in startAiActivity:
+- =--format=lcnt= writes =aiActivityFlow.title= (22 bytes) and
+  =aiActivityFlow.caption= (317 bytes).
+- =--format=all= includes the two sidecars alongside gv/pdf/svg/odg/jpg/png.
+- =ngClean --format=lcnt= removes only the two.
+- =ngClean --format=all= removes them alongside jpg/png/gv (keeps
+  pdf/svg/odg).
+- Empty-metadata graph (no =title=, no =caption= passed to =ng()=)
+  produces no files silently.
 ** -
 
 

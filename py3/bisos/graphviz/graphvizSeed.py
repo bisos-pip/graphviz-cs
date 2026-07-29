@@ -104,10 +104,14 @@ class NamedGraph(object):
             name: str | None =None,
             func: typing.Callable | None =None,
             osVers: list[str] | None =None,
+            title: str | None =None,
+            caption: str | None =None,
     ):
         self._namedGraphName = name
         self._namedGraphFunc = func
         self._osVers = osVers
+        self._namedGraphTitle = title
+        self._namedGraphCaption = caption
 
     @property
     def name(self) -> str | None:
@@ -124,6 +128,22 @@ class NamedGraph(object):
     @func.setter
     def func(self, value: typing.Callable | None,):
         self._namedGraphFunc = value
+
+    @property
+    def title(self) -> str | None:
+        return self._namedGraphTitle
+
+    @title.setter
+    def title(self, value: str | None,):
+        self._namedGraphTitle = value
+
+    @property
+    def caption(self) -> str | None:
+        return self._namedGraphCaption
+
+    @caption.setter
+    def caption(self, value: str | None,):
+        self._namedGraphCaption = value
 
 
 ####+BEGIN: b:py3:class/decl :className "GraphvizSeedInfo" :superClass "object" :comment "Abstraction of the seed Interface" :classType "basic"
@@ -226,12 +246,15 @@ def namedGraph(
         pkgName: str,
         func: typing.Callable | None = None,
         osVers: list[str] | None = None,
+        title: str | None = None,
+        caption: str | None = None,
 ) -> NamedGraph:
     """ #+begin_org
 ** [[elisp:(org-cycle)][| *DocStr | ]
     #+end_org """
 
-    pkg = NamedGraph(name=pkgName, func=func, osVers=osVers)
+    pkg = NamedGraph(name=pkgName, func=func, osVers=osVers,
+                     title=title, caption=caption)
     return pkg
 
 ####+BEGIN: b:py3:cs:func/typing :funcName "setup" :funcType "extTyped" :deco "track"

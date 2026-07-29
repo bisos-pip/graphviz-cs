@@ -159,6 +159,7 @@ def examples_csu(
             cmnd('ngProcess', pars=od([('format', 'png'),]), args=f"{each}", comment=f" # Produces {each}.png")
             cmnd('ngProcess', pars=od([('format', 'gv'),]), args=f"{each}", comment=f" # Produces {each}.gv same as .dot")
             cmnd('ngProcess', pars=od([('format', 'evince'),]), args=f"{each}", comment=f" # Produces {each}.pdf + evince")
+            cmnd('ngProcess', pars=od([('format', 'lcnt'),]), args=f"{each}", comment=f" # Produces {each}.title + {each}.caption (LCNT sidecars)")
             cmnd('ngProcess', pars=od([('format', 'all'),]), args=f"{each}", comment=f" # Produces ALL formats for {each}")
 
         cs.examples.menuSection(f'=Process ALL NamedGraphs in ALL Formats=')
@@ -307,14 +308,35 @@ class ngProcess(cs.Cmnd):
             if thisGraph == None:
                 return failed(cmndOutcome)
 
-            graph = thisGraph.func()
-
             if format == "all":
-                formatList = ["gv", "pdf", "svg", "odg", "jpg", "png",]
+                formatList = ["gv", "pdf", "svg", "odg", "jpg", "png", "lcnt",]
             else:
                 formatList = [ format ]
 
+            # Only invoke the graph builder if we actually need the Digraph.
+            # For "lcnt" (metadata sidecars) the func() call is not needed.
+            graph = None
+            if any(fmt != "lcnt" for fmt in formatList):
+                graph = thisGraph.func()
+
             for  eachFormat in formatList:
+                if eachFormat == "lcnt":
+                    # Metadata sidecars for LCNT-framework consumers (LaTeX,
+                    # org-mode figure captions, Blee panels, etc.). Written
+                    # only when the graph declares title/caption; a missing
+                    # attribute means the sidecar is not produced --- a
+                    # consumer's \input{} then fails visibly, which is the
+                    # right signal.
+                    if thisGraph.title is not None:
+                        titlePath = pathlib.Path(f"{eachGraphName}.title")
+                        titlePath.write_text(thisGraph.title + "\n")
+                        print(f"Wrote '{titlePath}'")
+                    if thisGraph.caption is not None:
+                        captionPath = pathlib.Path(f"{eachGraphName}.caption")
+                        captionPath.write_text(thisGraph.caption + "\n")
+                        print(f"Wrote '{captionPath}'")
+                    continue
+
                 fileName = graphWrite(
                     graph,
                     eachFormat,
@@ -389,9 +411,11 @@ class ngClean(cs.Cmnd):
                 return failed(cmndOutcome)
 
             if format == "all":
-                formatList = [ "jpg", "png", "gv",]
+                formatList = [ "jpg", "png", "gv", "title", "caption",]
             elif format == "full":
-                formatList = [ "pdf", "svg", "jpg", "png", "gv", "odg"]
+                formatList = [ "pdf", "svg", "jpg", "png", "gv", "odg", "title", "caption",]
+            elif format == "lcnt":
+                formatList = [ "title", "caption",]
             else:
                 formatList = [ format ]
 
